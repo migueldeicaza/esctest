@@ -28,6 +28,7 @@ def Write(s, sideChannelOk=True):
   if sideChannelOk and gSideChannel is not None:
     gSideChannel.write(s)
   stdout_fd.write(s)
+  stdout_fd.flush()
 
 def SetSideChannel(filename):
   global gSideChannel
@@ -173,12 +174,12 @@ def read(n):
   """Try to read n bytes. Times out if it takes more than 1
   second to read any given byte."""
   s = ""
-  f = sys.stdin.fileno()
+  f = stdin_fd.fileno()
   for i in range(n):
     r, w, e = select.select([f], [], [], escargs.args.timeout)
     if f not in r:
       raise esctypes.InternalError("Timeout waiting to read.")
-    s += os.read(f, 1)
+    s += os.read(f, 1).decode('utf-8')
   return s
 
 
