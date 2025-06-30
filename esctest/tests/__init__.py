@@ -78,82 +78,82 @@
 #           Ps = 5 1  -> reserved for Emacs shell.
 
 
-import ansirc
-import apc
-import bs
-import cbt
-import cha
-import change_color
-import change_special_color
-import change_dynamic_color
-import cht
-import cnl
-import cpl
-import cr
-import cub
-import cud
-import cuf
-import cup
-import cuu
-import da
-import da2
-import dch
-import dcs
-import decaln
-import decbi
-import deccra
-import decdc
-import decdsr
-import decera
-import decfra
-import decfi
-import decic
-import decid
-import decrc
-import decrqm
-import decrqss
-import decscl
-import decsed
-import decsel
-import decsera
-import decset
-import decset_tite_inhibit
-import decstbm
-import decstr
-import dl
-import ech
-import ed
-import el
-import ff
-import hpa
-import hpr
-import hts
-import hvp
-import ich
-import il
-import ind
-import lf
-import manipulate_selection_data
-import nel
-import pm
-import rep
-import reset_color
-import reset_special_color
-import ri
-import ris
-import rm
-import s8c1t
-import sd
-import sm
-import sm_title
-import sos
-import su
-import tbc
-import vpa
-import vpr
-import vt
-import xterm_save
-import xterm_winops
+from . import ansirc
+from . import apc
+from . import bs
+from . import cbt
+from . import cha
+from . import change_color
+from . import change_special_color
+from . import change_dynamic_color
+from . import cht
+from . import cnl
+from . import cpl
+from . import cr
+from . import cub
+from . import cud
+from . import cuf
+from . import cup
+from . import cuu
+from . import da
+from . import da2
+from . import dch
+from . import dcs
+from . import decaln
+from . import decbi
+from . import deccra
+from . import decdc
+from . import decdsr
+from . import decera
+from . import decfra
+from . import decfi
+from . import decic
+from . import decid
+from . import decrc
+from . import decrqm
+from . import decrqss
+from . import decscl
+from . import decsed
+from . import decsel
+from . import decsera
+from . import decset
+from . import decset_tite_inhibit
+from . import decstbm
+from . import decstr
+from . import dl
+from . import ech
+from . import ed
+from . import el
+from . import ff
+from . import hpa
+from . import hpr
+from . import hts
+from . import hvp
+from . import ich
+from . import il
+from . import ind
+from . import lf
+from . import manipulate_selection_data
+from . import nel
+from . import pm
+from . import rep
+from . import reset_color
+from . import reset_special_color
+from . import ri
+from . import ris
+from . import rm
+from . import s8c1t
+from . import sd
+from . import sm
+from . import sm_title
+from . import sos
+from . import su
+from . import tbc
+from . import vpa
+from . import vpr
+from . import vt
+from . import xterm_save
+from . import xterm_winops
 
 tests = [
     ansirc.ANSIRCTests,

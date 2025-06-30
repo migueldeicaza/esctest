@@ -16,8 +16,8 @@ def Init():
   global stdout_fd
   global stdin_fd
 
-  stdout_fd = os.fdopen(sys.stdout.fileno(), 'w', 0)
-  stdin_fd = os.fdopen(sys.stdin.fileno(), 'r', 0)
+  stdout_fd = os.fdopen(sys.stdout.fileno(), 'w', 1)
+  stdin_fd = os.fdopen(sys.stdin.fileno(), 'r', 1)
   tty.setraw(stdin_fd)
 
 def Shutdown():
