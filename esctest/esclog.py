@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 import escargs
 
 LOG_ERROR = 1
@@ -28,4 +28,4 @@ def Log(level, fmt):
     log += s
 
 def Print():
-  print log.replace("\n", "\r\n")
+  print(log.replace("\n", "\r\n"))

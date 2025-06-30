@@ -117,11 +117,11 @@ class XtermWinopsTests(object):
     window size and the X screen-size, since that is fairly likely
     to succeed where a fixed size would fail since it does not take
     into account the actual screen-size."""
-    return (size_a.width() + size_b.width()) / 2
+    return (size_a.width() + size_b.width()) // 2
 
   def AverageHeight(self, size_a, size_b):
     """Return the average of the heights from two sizes."""
-    return (size_a.height() + size_b.height()) / 2
+    return (size_a.height() + size_b.height()) // 2
 
   def test_XtermWinops_IconifyDeiconfiy(self):
     esccmd.XTERM_WINOPS(esccmd.WINOP_ICONIFY)

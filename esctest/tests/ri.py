@@ -111,7 +111,7 @@ class RITests(object):
 
     # Move it up by a lot
     height = GetScreenSize().height()
-    for i in xrange(height):
+    for i in range(height):
       esccmd.RI()
 
     # Ensure it stopped at the top of the screen

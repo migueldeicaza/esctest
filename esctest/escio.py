@@ -57,7 +57,7 @@ def DCS():
     return ESC + "P"
 
 def WriteOSC(params, bel=False, requestsReport=False):
-  str_params = map(str, params)
+  str_params = list(map(str, params))
   joined_params = ";".join(str_params)
   if bel:
     terminator = BEL
@@ -78,7 +78,7 @@ def WriteCSI(prefix="", params=[], intermediate="", final="", requestsReport=Fal
       return ""
     else:
       return str(p)
-  str_params = map(StringifyCSIParam, params)
+  str_params = list(map(StringifyCSIParam, params))
 
   # Remove trailing empty args
   while len(str_params) > 0 and str_params[-1] == "":
@@ -174,7 +174,7 @@ def read(n):
   second to read any given byte."""
   s = ""
   f = sys.stdin.fileno()
-  for i in xrange(n):
+  for i in range(n):
     r, w, e = select.select([f], [], [], escargs.args.timeout)
     if f not in r:
       raise esctypes.InternalError("Timeout waiting to read.")

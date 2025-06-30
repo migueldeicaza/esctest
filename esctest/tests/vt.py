@@ -120,7 +120,7 @@ class VTTests(object):
 
     # Move it down by a lot
     height = GetScreenSize().height()
-    for i in xrange(height):
+    for i in range(height):
       escio.Write(VT)
 
     # Ensure it stopped at the bottom of the screen

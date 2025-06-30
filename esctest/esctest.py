@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/python3
 import esc
 import escargs
 import esccmd
@@ -58,7 +58,7 @@ def reset():
   esccmd.ED(2)
 
   # Pop the title stack just in case something got left on there
-  for i in xrange(5):
+  for i in range(5):
     esccmd.XTERM_WINOPS(esccmd.WINOP_POP_TITLE,
                         esccmd.WINOP_PUSH_TITLE_ICON_AND_WINDOW)
 
@@ -101,16 +101,16 @@ def RunTest(name, method):
     RemoveSideChannel()
     escutil.AssertAssertionAsserted()
     esclog.LogInfo("Passed.")
-  except esctypes.KnownBug, e:
+  except esctypes.KnownBug as e:
     RemoveSideChannel()
     esclog.LogInfo("Fails as expected: " + str(e))
     ok = None
-  except esctypes.InsufficientVTLevel, e:
+  except esctypes.InsufficientVTLevel as e:
     RemoveSideChannel()
     esclog.LogInfo("Skipped because terminal lacks requisite capability: " +
                    str(e))
     ok = None
-  except Exception, e:
+  except Exception as e:
     RemoveSideChannel()
     tb = traceback.format_exc()
     ok = False
@@ -198,16 +198,16 @@ def main():
 
   try:
     PerformAction()
-  except Exception, e:
+  except Exception as e:
     tb = traceback.format_exc()
     try:
       reset()
     except:
-      print "reset() failed with traceback:"
-      print traceback.format_exc().replace("\n", "\r\n")
+      print("reset() failed with traceback:")
+      print(traceback.format_exc().replace("\n", "\r\n"))
 
-    print "RunTests failed:\r\n"
-    print tb.replace("\n", "\r\n")
+    print("RunTests failed:\r\n")
+    print(tb.replace("\n", "\r\n"))
     esclog.LogError("Failed with traceback:")
     esclog.LogError(tb)
   finally:
@@ -219,10 +219,10 @@ def main():
       try:
         reset()
       except:
-        print "reset() failed with traceback:"
-        print traceback.format_exc().replace("\n", "\r\n")
+        print("reset() failed with traceback:")
+        print(traceback.format_exc().replace("\n", "\r\n"))
 
-      print "\r\nLogs:\r\n"
+      print("\r\nLogs:\r\n")
       esclog.Print()
 
   shutdown()

@@ -325,13 +325,13 @@ def optionRejects(terminal, option):
       if escargs.args.expected_terminal == terminal:
         try:
           func(self, *args, **kwargs)
-        except Exception, e:
+        except Exception as e:
           if not hasOption:
             # Failed despite option being unset. Re-raise.
             raise
           tb = traceback.format_exc()
           lines = tb.split("\n")
-          lines = map(lambda x: "EXPECTED FAILURE (MISSING OPTION): " + x, lines)
+          lines = list(map(lambda x: "EXPECTED FAILURE (MISSING OPTION): " + x, lines))
           raise esctypes.KnownBug(reason + "\n\n" + "\n".join(lines))
 
         # Got here because test passed. If the option is set, that's
@@ -355,13 +355,13 @@ def optionRequired(terminal, option, allowPassWithoutOption=False):
       if escargs.args.expected_terminal == terminal:
         try:
           func(self, *args, **kwargs)
-        except Exception, e:
+        except Exception as e:
           if hasOption:
             # Failed despite option being set. Re-raise.
             raise
           tb = traceback.format_exc()
           lines = tb.split("\n")
-          lines = map(lambda x: "EXPECTED FAILURE (MISSING OPTION): " + x, lines)
+          lines = list(map(lambda x: "EXPECTED FAILURE (MISSING OPTION): " + x, lines))
           raise esctypes.KnownBug(reason + "\n\n" + "\n".join(lines))
 
         # Got here because test passed. If the option isn't set, that's
@@ -387,10 +387,10 @@ def knownBug(terminal, reason, noop=False, shouldTry=True):
           raise esctypes.KnownBug(reason + " (not trying)")
         try:
           func(self, *args, **kwargs)
-        except Exception, e:
+        except Exception as e:
           tb = traceback.format_exc()
           lines = tb.split("\n")
-          lines = map(lambda x: "KNOWN BUG: " + x, lines)
+          lines = list(map(lambda x: "KNOWN BUG: " + x, lines))
           raise esctypes.KnownBug(reason + "\n" + "\n".join(lines))
 
         # Shouldn't get here because the test should have failed. If 'force' is on then
